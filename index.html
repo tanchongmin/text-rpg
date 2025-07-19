@@ -1,0 +1,38 @@
+<!-- Add to styles.css -->
+<style>
+  /* MP bars in blue */
+  .mp-bg { height: 12px; margin-bottom: 8px; }
+  .mp-fill { background: #42a5f5; }
+  /* Labels above bars */
+  .bar-label { font-size: 0.9rem; margin: 4px 0 0; }
+  /* Status area */
+  #statusUpdate { margin-top: 12px; font-style: italic; }
+</style>
+
+<!-- In your index.html, replace the SCREEN 3 div with this: -->
+<div class="screen" id="screen3" hidden>
+  <h2 id="enemyName">Battle!</h2>
+
+  <!-- Enemy bars -->
+  <div class="bar-label">Enemy HP</div>
+  <div class="bar-bg"><div id="enemyHpBar" class="bar-fill"></div></div>
+  <div class="bar-label">Enemy MP</div>
+  <div class="bar-bg mp-bg"><div id="enemyMpBar" class="bar-fill mp-fill"></div></div>
+
+  <hr>
+
+  <!-- Player bars -->
+  <div class="bar-label">Your HP</div>
+  <div class="bar-bg"><div id="playerHpBar" class="bar-fill"></div></div>
+  <div class="bar-label">Your MP</div>
+  <div class="bar-bg mp-bg"><div id="playerMpBar" class="bar-fill mp-fill"></div></div>
+
+  <!-- Battle log and options -->
+  <div id="battleLog"></div>
+  <div id="battleOptions"></div>
+
+  <!-- Status update -->
+  <div id="statusUpdate"></div>
+
+  <button id="toMapBtn">Flee</button>
+</div>
