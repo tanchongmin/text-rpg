@@ -74,3 +74,23 @@ button:hover {
   background: #8bc34a;
   transition: width 0.3s;
 }
+
+/* MP Bars */
+.mp-bg { height: 12px; margin-bottom: 8px; }
+.mp-fill { background: #42a5f5; }
+
+/* EXP Bars */
+.exp-bg {
+  background: #443d16;
+  height: 12px;
+  margin-bottom: 8px;
+}
+.exp-fill {
+  background: #f2c94c;
+}
+
+/* Labels */
+.bar-label { font-size: 0.9rem; margin: 4px 0 0; }
+
+/* Status Update */
+#statusUpdate { margin-top: 12px; font-style: italic; }

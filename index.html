@@ -1,38 +1,114 @@
-<!-- Add to styles.css -->
-<style>
-  /* MP bars in blue */
-  .mp-bg { height: 12px; margin-bottom: 8px; }
-  .mp-fill { background: #42a5f5; }
-  /* Labels above bars */
-  .bar-label { font-size: 0.9rem; margin: 4px 0 0; }
-  /* Status area */
-  #statusUpdate { margin-top: 12px; font-style: italic; }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dungeon Delver RPG</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- SCREEN 1: MAIN MENU -->
+  <div class="screen" id="screen1">
+    <h1>Dungeon Delver</h1>
+    <div id="mainStats"></div>
+    <label>Difficulty:
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </label>
+    <button id="startBtn">Start Game</button>
+    <button id="continueBtn">Continue</button>
+  </div>
 
-<!-- In your index.html, replace the SCREEN 3 div with this: -->
-<div class="screen" id="screen3" hidden>
-  <h2 id="enemyName">Battle!</h2>
+  <!-- SCREEN 2: DUNGEON NAVIGATION -->
+  <div class="screen" id="screen2" hidden>
+    <h2>Dungeon Level <span id="levelNum"></span></h2>
+    <div id="navStats"></div>
+    <pre id="minimap"></pre>
+    <button id="moveBtn">Explore Next Room</button>
+    <button id="toEquipmentBtn">Equipment & Spells</button>
+  </div>
 
-  <!-- Enemy bars -->
-  <div class="bar-label">Enemy HP</div>
-  <div class="bar-bg"><div id="enemyHpBar" class="bar-fill"></div></div>
-  <div class="bar-label">Enemy MP</div>
-  <div class="bar-bg mp-bg"><div id="enemyMpBar" class="bar-fill mp-fill"></div></div>
+  <!-- SCREEN 3: BATTLE -->
+  <div class="screen" id="screen3" hidden>
+    <h2 id="enemyName">Battle!</h2>
 
-  <hr>
+    <!-- Enemy HP/MP -->
+    <div class="bar-label">Enemy HP: <span id="enemyHpText"></span></div>
+    <div class="bar-bg"><div id="enemyHpBar" class="bar-fill"></div></div>
+    <div class="bar-label">Enemy MP: <span id="enemyMpText"></span></div>
+    <div class="bar-bg mp-bg"><div id="enemyMpBar" class="bar-fill mp-fill"></div></div>
 
-  <!-- Player bars -->
-  <div class="bar-label">Your HP</div>
-  <div class="bar-bg"><div id="playerHpBar" class="bar-fill"></div></div>
-  <div class="bar-label">Your MP</div>
-  <div class="bar-bg mp-bg"><div id="playerMpBar" class="bar-fill mp-fill"></div></div>
+    <hr>
 
-  <!-- Battle log and options -->
-  <div id="battleLog"></div>
-  <div id="battleOptions"></div>
+    <!-- Player HP/MP -->
+    <div class="bar-label">Your HP: <span id="playerHpText"></span></div>
+    <div class="bar-bg"><div id="playerHpBar" class="bar-fill"></div></div>
+    <div class="bar-label">Your MP: <span id="playerMpText"></span></div>
+    <div class="bar-bg mp-bg"><div id="playerMpBar" class="bar-fill mp-fill"></div></div>
 
-  <!-- Status update -->
-  <div id="statusUpdate"></div>
+    <!-- EXP to next level -->
+    <div class="bar-label">EXP: <span id="expText"></span></div>
+    <div class="bar-bg exp-bg"><div id="expBar" class="bar-fill exp-fill"></div></div>
 
-  <button id="toMapBtn">Flee</button>
-</div>
+    <!-- Battle log and options -->
+    <div id="battleLog"></div>
+    <div id="battleOptions"></div>
+
+    <!-- Status update -->
+    <div id="statusUpdate"></div>
+
+    <button id="toMapBtn">Flee</button>
+  </div>
+
+  <!-- SCREEN 4: RANDOM EVENT -->
+  <div class="screen" id="screen4" hidden>
+    <h2>Event</h2>
+    <p id="eventText"></p>
+    <div id="eventChoices"></div>
+  </div>
+
+  <!-- SCREEN 5: SHOP & SAVE -->
+  <div class="screen" id="screen5" hidden>
+    <h2>Shop / Save Point</h2>
+    <div id="shopStats"></div>
+    <div id="shopList"></div>
+    <button id="saveBtn">Save Game</button>
+    <button id="exitShopBtn">Leave Shop</button>
+  </div>
+
+  <!-- SCREEN 6: EQUIPMENT & SPELLS -->
+  <div class="screen" id="screen6" hidden>
+    <h2>Equipment & Spells</h2>
+    <div id="equipList"></div>
+    <div id="spellList"></div>
+    <button id="backToMapBtn">Back to Dungeon</button>
+  </div>
+
+  <!-- SCREEN 7: LEVEL UP -->
+  <div class="screen" id="screen7" hidden>
+    <h2>Level Up!</h2>
+    <p>You reached level <strong><span id="newLevel"></span></strong>!<br>
+       You have <strong><span id="unspentPoints"></span></strong> points to spend.</p>
+    <div id="statButtons">
+      <button id="addHp">+HP</button>
+      <button id="addMp">+MP</button>
+      <button id="addAtk">+ATK</button>
+      <button id="addDef">+DEF</button>
+      <button id="addMagAtk">+M.ATK</button>
+      <button id="addMagDef">+M.DEF</button>
+    </div>
+    <button id="confirmStats">Confirm</button>
+  </div>
+
+  <!-- Configuration scripts -->
+  <script src="config/equipment.js"></script>
+  <script src="config/items.js"></script>
+  <script src="config/enemies.js"></script>
+  <script src="config/spells.js"></script>
+  <script src="config/events.js"></script>
+  <!-- Core game logic -->
+  <script src="main.js"></script>
+</body>
+</html>
